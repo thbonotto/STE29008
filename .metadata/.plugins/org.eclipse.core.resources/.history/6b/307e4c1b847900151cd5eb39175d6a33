@@ -1,0 +1,31 @@
+/*
+ * main.c
+ *
+ *  Created on: 18 de set de 2015
+ *      Author: arliones.hoeller@ifsc.edu.br
+ */
+
+#include <avr/io.h>
+#include <util/atomic.h>
+#include "milli_counter.h"
+
+int main(void) {
+    milli_counter_t time = 0, now = 0;
+    unsigned char status = 0xff;
+
+    DDRB = 0xff;
+    PORTB = status;
+
+    milli_counter_start();
+
+    sei();
+
+    while(1) {
+        now = milli_counter();
+        if(now - time >= 50) {
+            time = now;
+            status = !status;
+        }
+        PORTB = status;
+    }
+}
