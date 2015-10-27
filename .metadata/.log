@@ -63,3 +63,45 @@ Binding(ALT+CTRL+U,
 
 !ENTRY org.eclipse.cdt.core 1 0 2015-10-23 10:31:53.531
 !MESSAGE Indexed 'lab5' (0 sources, 0 headers) in 0,001 sec: 0 declarations; 0 references; 0 unresolved inclusions; 0 syntax errors; 0 unresolved names (0%)
+
+!ENTRY org.eclipse.core.resources 4 568 2015-10-27 08:20:53.801
+!MESSAGE Could not write metadata for '/uart'.
+!STACK 0
+java.io.FileNotFoundException: /home/aluno/workspace/.metadata/.plugins/org.eclipse.core.resources/.projects/uart/.markers.snap (Arquivo ou diretório não encontrado)
+	at java.io.FileOutputStream.open(Native Method)
+	at java.io.FileOutputStream.<init>(FileOutputStream.java:221)
+	at java.io.FileOutputStream.<init>(FileOutputStream.java:142)
+	at org.eclipse.core.internal.localstore.SafeChunkyOutputStream.<init>(SafeChunkyOutputStream.java:45)
+	at org.eclipse.core.internal.localstore.SafeChunkyOutputStream.<init>(SafeChunkyOutputStream.java:41)
+	at org.eclipse.core.internal.resources.SaveManager.visitAndSnap(SaveManager.java:1769)
+	at org.eclipse.core.internal.resources.SaveManager.visitAndSnap(SaveManager.java:1853)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1222)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1163)
+	at org.eclipse.core.internal.resources.DelayedSnapshotJob.run(DelayedSnapshotJob.java:52)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY de.innot.avreclipse.core 4 0 2015-10-27 08:33:09.841
+!MESSAGE File "/dyn/resources/prod_documents/8271.pdf" not found on "www.atmel.com"
+!SUBENTRY 1 de.innot.avreclipse.core 4 0 2015-10-27 08:33:09.841
+!MESSAGE FileNotFoundException
+!STACK 0
+java.io.FileNotFoundException: http://www.atmel.com/Images/8271.pdf
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1625)
+	at java.net.URLConnection.getContent(URLConnection.java:748)
+	at de.innot.avreclipse.util.URLDownloadManager.internalDownload(URLDownloadManager.java:277)
+	at de.innot.avreclipse.util.URLDownloadManager.download(URLDownloadManager.java:196)
+	at de.innot.avreclipse.ui.views.supportedmcu.URLColumnLabelProvider$4.run(URLColumnLabelProvider.java:518)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY de.innot.avreclipse.core 4 0 2015-10-27 08:33:23.315
+!MESSAGE File "/dyn/resources/prod_documents/8271.pdf" not found on "www.atmel.com"
+!SUBENTRY 1 de.innot.avreclipse.core 4 0 2015-10-27 08:33:23.315
+!MESSAGE FileNotFoundException
+!STACK 0
+java.io.FileNotFoundException: http://www.atmel.com/Images/8271.pdf
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1625)
+	at java.net.URLConnection.getContent(URLConnection.java:748)
+	at de.innot.avreclipse.util.URLDownloadManager.internalDownload(URLDownloadManager.java:277)
+	at de.innot.avreclipse.util.URLDownloadManager.download(URLDownloadManager.java:196)
+	at de.innot.avreclipse.ui.views.supportedmcu.URLColumnLabelProvider$4.run(URLColumnLabelProvider.java:518)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)

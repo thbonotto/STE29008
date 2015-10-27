@@ -1,0 +1,249 @@
+
+uart.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         00000150  00000000  00000000  00000074  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .bss          00000001  00800100  00800100  000001c4  2**0
+                  ALLOC
+  2 .stab         00000b40  00000000  00000000  000001c4  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  3 .stabstr      00000783  00000000  00000000  00000d04  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	33 c0       	rjmp	.+102    	; 0x68 <__ctors_end>
+   2:	00 00       	nop
+   4:	41 c0       	rjmp	.+130    	; 0x88 <__bad_interrupt>
+   6:	00 00       	nop
+   8:	3f c0       	rjmp	.+126    	; 0x88 <__bad_interrupt>
+   a:	00 00       	nop
+   c:	3d c0       	rjmp	.+122    	; 0x88 <__bad_interrupt>
+   e:	00 00       	nop
+  10:	3b c0       	rjmp	.+118    	; 0x88 <__bad_interrupt>
+  12:	00 00       	nop
+  14:	39 c0       	rjmp	.+114    	; 0x88 <__bad_interrupt>
+  16:	00 00       	nop
+  18:	37 c0       	rjmp	.+110    	; 0x88 <__bad_interrupt>
+  1a:	00 00       	nop
+  1c:	35 c0       	rjmp	.+106    	; 0x88 <__bad_interrupt>
+  1e:	00 00       	nop
+  20:	33 c0       	rjmp	.+102    	; 0x88 <__bad_interrupt>
+  22:	00 00       	nop
+  24:	31 c0       	rjmp	.+98     	; 0x88 <__bad_interrupt>
+  26:	00 00       	nop
+  28:	2f c0       	rjmp	.+94     	; 0x88 <__bad_interrupt>
+  2a:	00 00       	nop
+  2c:	2d c0       	rjmp	.+90     	; 0x88 <__bad_interrupt>
+  2e:	00 00       	nop
+  30:	2b c0       	rjmp	.+86     	; 0x88 <__bad_interrupt>
+  32:	00 00       	nop
+  34:	29 c0       	rjmp	.+82     	; 0x88 <__bad_interrupt>
+  36:	00 00       	nop
+  38:	27 c0       	rjmp	.+78     	; 0x88 <__bad_interrupt>
+  3a:	00 00       	nop
+  3c:	25 c0       	rjmp	.+74     	; 0x88 <__bad_interrupt>
+  3e:	00 00       	nop
+  40:	23 c0       	rjmp	.+70     	; 0x88 <__bad_interrupt>
+  42:	00 00       	nop
+  44:	21 c0       	rjmp	.+66     	; 0x88 <__bad_interrupt>
+  46:	00 00       	nop
+  48:	1f c0       	rjmp	.+62     	; 0x88 <__bad_interrupt>
+  4a:	00 00       	nop
+  4c:	1d c0       	rjmp	.+58     	; 0x88 <__bad_interrupt>
+  4e:	00 00       	nop
+  50:	1b c0       	rjmp	.+54     	; 0x88 <__bad_interrupt>
+  52:	00 00       	nop
+  54:	19 c0       	rjmp	.+50     	; 0x88 <__bad_interrupt>
+  56:	00 00       	nop
+  58:	17 c0       	rjmp	.+46     	; 0x88 <__bad_interrupt>
+  5a:	00 00       	nop
+  5c:	15 c0       	rjmp	.+42     	; 0x88 <__bad_interrupt>
+  5e:	00 00       	nop
+  60:	13 c0       	rjmp	.+38     	; 0x88 <__bad_interrupt>
+  62:	00 00       	nop
+  64:	11 c0       	rjmp	.+34     	; 0x88 <__bad_interrupt>
+	...
+
+00000068 <__ctors_end>:
+  68:	11 24       	eor	r1, r1
+  6a:	1f be       	out	0x3f, r1	; 63
+  6c:	cf ef       	ldi	r28, 0xFF	; 255
+  6e:	d8 e0       	ldi	r29, 0x08	; 8
+  70:	de bf       	out	0x3e, r29	; 62
+  72:	cd bf       	out	0x3d, r28	; 61
+
+00000074 <__do_clear_bss>:
+  74:	11 e0       	ldi	r17, 0x01	; 1
+  76:	a0 e0       	ldi	r26, 0x00	; 0
+  78:	b1 e0       	ldi	r27, 0x01	; 1
+  7a:	01 c0       	rjmp	.+2      	; 0x7e <.do_clear_bss_start>
+
+0000007c <.do_clear_bss_loop>:
+  7c:	1d 92       	st	X+, r1
+
+0000007e <.do_clear_bss_start>:
+  7e:	a1 30       	cpi	r26, 0x01	; 1
+  80:	b1 07       	cpc	r27, r17
+  82:	e1 f7       	brne	.-8      	; 0x7c <.do_clear_bss_loop>
+  84:	5c d0       	rcall	.+184    	; 0x13e <main>
+  86:	62 c0       	rjmp	.+196    	; 0x14c <_exit>
+
+00000088 <__bad_interrupt>:
+  88:	bb cf       	rjmp	.-138    	; 0x0 <__vectors>
+
+0000008a <setup>:
+
+#include <avr/io.h>
+
+uint8_t data;
+
+void setup() {
+  8a:	df 93       	push	r29
+  8c:	cf 93       	push	r28
+  8e:	cd b7       	in	r28, 0x3d	; 61
+  90:	de b7       	in	r29, 0x3e	; 62
+	data = 0;
+  92:	10 92 00 01 	sts	0x0100, r1
+	UBRR0L = 103;
+  96:	84 ec       	ldi	r24, 0xC4	; 196
+  98:	90 e0       	ldi	r25, 0x00	; 0
+  9a:	27 e6       	ldi	r18, 0x67	; 103
+  9c:	fc 01       	movw	r30, r24
+  9e:	20 83       	st	Z, r18
+	UBRR0H = 0;
+  a0:	85 ec       	ldi	r24, 0xC5	; 197
+  a2:	90 e0       	ldi	r25, 0x00	; 0
+  a4:	fc 01       	movw	r30, r24
+  a6:	10 82       	st	Z, r1
+	UCSR0C = 0x06;
+  a8:	82 ec       	ldi	r24, 0xC2	; 194
+  aa:	90 e0       	ldi	r25, 0x00	; 0
+  ac:	26 e0       	ldi	r18, 0x06	; 6
+  ae:	fc 01       	movw	r30, r24
+  b0:	20 83       	st	Z, r18
+	UCSR0B = 0x18;
+  b2:	81 ec       	ldi	r24, 0xC1	; 193
+  b4:	90 e0       	ldi	r25, 0x00	; 0
+  b6:	28 e1       	ldi	r18, 0x18	; 24
+  b8:	fc 01       	movw	r30, r24
+  ba:	20 83       	st	Z, r18
+}
+  bc:	cf 91       	pop	r28
+  be:	df 91       	pop	r29
+  c0:	08 95       	ret
+
+000000c2 <uart_has_data>:
+
+int uart_has_data(){
+  c2:	df 93       	push	r29
+  c4:	cf 93       	push	r28
+  c6:	cd b7       	in	r28, 0x3d	; 61
+  c8:	de b7       	in	r29, 0x3e	; 62
+	return(UCSR0A & 0x80);
+  ca:	80 ec       	ldi	r24, 0xC0	; 192
+  cc:	90 e0       	ldi	r25, 0x00	; 0
+  ce:	fc 01       	movw	r30, r24
+  d0:	80 81       	ld	r24, Z
+  d2:	88 2f       	mov	r24, r24
+  d4:	90 e0       	ldi	r25, 0x00	; 0
+  d6:	80 78       	andi	r24, 0x80	; 128
+  d8:	90 70       	andi	r25, 0x00	; 0
+}
+  da:	cf 91       	pop	r28
+  dc:	df 91       	pop	r29
+  de:	08 95       	ret
+
+000000e0 <uart_receive_data>:
+
+int uart_ready() {
+	return (UCSR0A & 0x20);
+}
+
+void uart_receive_data(){
+  e0:	df 93       	push	r29
+  e2:	cf 93       	push	r28
+  e4:	cd b7       	in	r28, 0x3d	; 61
+  e6:	de b7       	in	r29, 0x3e	; 62
+	while(!uart_has_data());
+  e8:	00 00       	nop
+  ea:	eb df       	rcall	.-42     	; 0xc2 <uart_has_data>
+  ec:	00 97       	sbiw	r24, 0x00	; 0
+  ee:	e9 f3       	breq	.-6      	; 0xea <uart_receive_data+0xa>
+  f0:	86 ec       	ldi	r24, 0xC6	; 198
+		data = UDR0;;
+  f2:	90 e0       	ldi	r25, 0x00	; 0
+  f4:	fc 01       	movw	r30, r24
+  f6:	80 81       	ld	r24, Z
+  f8:	80 93 00 01 	sts	0x0100, r24
+  fc:	cf 91       	pop	r28
+}
+  fe:	df 91       	pop	r29
+ 100:	08 95       	ret
+
+00000102 <uart_send_data>:
+
+void uart_send_data(){
+ 102:	df 93       	push	r29
+ 104:	cf 93       	push	r28
+ 106:	cd b7       	in	r28, 0x3d	; 61
+ 108:	de b7       	in	r29, 0x3e	; 62
+	while(!uart_ready);
+	UDR0 = data;
+ 10a:	86 ec       	ldi	r24, 0xC6	; 198
+ 10c:	90 e0       	ldi	r25, 0x00	; 0
+ 10e:	20 91 00 01 	lds	r18, 0x0100
+ 112:	fc 01       	movw	r30, r24
+ 114:	20 83       	st	Z, r18
+}
+ 116:	cf 91       	pop	r28
+ 118:	df 91       	pop	r29
+ 11a:	08 95       	ret
+
+0000011c <loop>:
+
+void loop(){
+ 11c:	df 93       	push	r29
+ 11e:	cf 93       	push	r28
+ 120:	cd b7       	in	r28, 0x3d	; 61
+ 122:	de b7       	in	r29, 0x3e	; 62
+	if(uart_has_data()) {
+ 124:	ce df       	rcall	.-100    	; 0xc2 <uart_has_data>
+ 126:	00 97       	sbiw	r24, 0x00	; 0
+ 128:	39 f0       	breq	.+14     	; 0x138 <loop+0x1c>
+ 12a:	da df       	rcall	.-76     	; 0xe0 <uart_receive_data>
+		uart_receive_data();
+ 12c:	80 91 00 01 	lds	r24, 0x0100
+		data++;
+ 130:	8f 5f       	subi	r24, 0xFF	; 255
+ 132:	80 93 00 01 	sts	0x0100, r24
+ 136:	e5 df       	rcall	.-54     	; 0x102 <uart_send_data>
+ 138:	cf 91       	pop	r28
+		uart_send_data();
+ 13a:	df 91       	pop	r29
+ 13c:	08 95       	ret
+
+0000013e <main>:
+	}
+}
+
+int main(){
+ 13e:	df 93       	push	r29
+ 140:	cf 93       	push	r28
+ 142:	cd b7       	in	r28, 0x3d	; 61
+ 144:	de b7       	in	r29, 0x3e	; 62
+	setup();
+ 146:	a1 df       	rcall	.-190    	; 0x8a <setup>
+ 148:	e9 df       	rcall	.-46     	; 0x11c <loop>
+	while(1)
+		loop();
+ 14a:	fe cf       	rjmp	.-4      	; 0x148 <main+0xa>
+
+0000014c <_exit>:
+ 14c:	f8 94       	cli
+
+0000014e <__stop_program>:
+ 14e:	ff cf       	rjmp	.-2      	; 0x14e <__stop_program>
