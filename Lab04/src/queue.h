@@ -14,22 +14,22 @@
 
 #include <avr/io.h>
 
-struct Node {
+typedef struct Node {
 	uint8_t pos;
 	byte data;
 	byte * next;
 	byte * prev;
-};
+} Node;
 
-struct Queue {
-	const int size = BUFFER_SIZE;
+typedef struct Queue {
+	uint8_t size;
 	Node buffer [BUFFER_SIZE];
 	uint8_t headPos;
 	uint8_t TailPos;
-};
+} Queue;
 
 void push();
 
-Node pop();
+byte pop();
 
 #endif
