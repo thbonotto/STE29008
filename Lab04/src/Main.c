@@ -1,21 +1,29 @@
 #include <avr/io.h>
 #include <avr/interrupt.h>
 
+#include "tx_buffer.h"
+#include "rx_buffer.h"
 #include "uart.h"
-#include "queue.h"
+#include "milli_counter.h"
+
+/**
+ * Build a graph where the x axis is the processing time (P={1,4,8}, ms)
+ * and the y axis is the minimum buffer size for a 1-second data transfer busrt;
+ */
+#define TIME 1/0.008
 
 // We need 2 buffers, one to store data received from serial, and another to store data that will be sent through the serial
-Queue tx_buf;
-Queue rx_buf;
+TxBuffer tx_buf;
+RxBuffer rx_buf;
 
 // Finished sending one byte
 void tx_interrupt_handler(){
-    uart_send_data(pop(&tx_buf));
+    uart_send_data(popTx(&tx_buf));
 }
 
 // Finished receiving one byte
 void rx_interrupt_handler(){
-	push(&rx_buf,uart_receive_data());
+	pushRx(&rx_buf,uart_receive_data());
 }
 
 int rx_buffer_has_data(){
@@ -39,8 +47,8 @@ ISR(USART_UDRE_vect){
 }
 
 void setup(){
-	init(&tx_buf);
-	init(&rx_buf);
+	initTx(&tx_buf);
+	initRx(&rx_buf);
 	uart_setup();
 	sei();
 
@@ -50,8 +58,11 @@ void loop(){
 	if(tx_buffer_has_data())
 		turnOnRxOnTx();
 
+	milli_counter_start();
+		while(milli_counter()<TIME);
+
 	if(rx_buffer_has_data())
-		push(&tx_buf, pop(&rx_buf));
+		pushTx(&tx_buf, popRx(&rx_buf));
 }
 
 int main(void) {

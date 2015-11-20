@@ -5,13 +5,13 @@
  *      Author: aluno
  */
 
-#ifndef SRC_QUEUE_H_
-#define SRC_QUEUE_H_
+#ifndef SRC_RX_BUFFER_H_
+#define SRC_RX_BUFFER_H_
 
 #define byte uint8_t
-#define BUFFER_SIZE 256
+#define TX_BUFFER_SIZE 8
 
-#include <avr/common.h>
+#include <stdint.h>
 
 /*typedef struct Node {
 	volatile uint8_t pos;
@@ -21,20 +21,20 @@
 } Node;
 */
 
-typedef struct Queue {
+typedef struct TxBuffer {
 	volatile uint8_t size;
-	volatile byte buffer [BUFFER_SIZE];
+	volatile byte buffer [TX_BUFFER_SIZE];
 	volatile uint8_t headPos;
 	volatile uint8_t TailPos;
-} Queue;
+} TxBuffer;
 
-void push(Queue * fila, byte dado){
-	if(fila->size==(BUFFER_SIZE-1))
+void pushTx(TxBuffer * fila, byte dado){
+	if(fila->size==(TX_BUFFER_SIZE-1))
 		return; /// Buffer Overflow
 
 	fila->buffer[fila->TailPos]=dado;
 
-	if(fila->TailPos==(BUFFER_SIZE-1))
+	if(fila->TailPos==(TX_BUFFER_SIZE-1))
 		fila->TailPos=0;
 	else
 	fila->TailPos++;
@@ -43,7 +43,7 @@ void push(Queue * fila, byte dado){
 
 }
 
-byte pop(Queue * fila){
+byte popTx(TxBuffer * fila){
 	if(!fila->size)
 			return 0;
 
@@ -62,7 +62,7 @@ byte pop(Queue * fila){
 
 	if(fila->size)
 		if(!fila->TailPos)
-			fila->headPos=(BUFFER_SIZE-1);
+			fila->headPos=(TX_BUFFER_SIZE-1);
 		else
 			fila->headPos=(fila->TailPos-1);
 	else
@@ -71,12 +71,12 @@ byte pop(Queue * fila){
 	return data;
 }
 
-void init(Queue * fila){
+void initTx(TxBuffer * fila){
 	unsigned int i;
 	fila->TailPos=0;
 	fila->headPos=0;
 	fila->size=0;
-	for(i=0; i < BUFFER_SIZE; i++)
+	for(i=0; i < TX_BUFFER_SIZE; i++)
 		fila->buffer[i]=0;
 }
 

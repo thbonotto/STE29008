@@ -19,7 +19,9 @@ void turnOnRxOffTx() {
 void turnOnRxOnTx() {
 	UCSR0B = 0xB8;
 }
-
+/**
+ * Plot in this graph curves for different UART bitrates (B={19200,57600,115200}, bps).
+ */
 /// Configure serial to 9600 8N1
 void uart_setup() {
 	UBRR0H = 0;
