@@ -28,14 +28,15 @@ typedef struct Queue {
 	volatile uint8_t TailPos;
 } Queue;
 
-//TODO Implement control, circular, overflow
-
 void push(Queue * fila, byte dado){
 	if(fila->size==(BUFFER_SIZE-1))
 		return; /// Buffer Overflow
 
 	fila->buffer[fila->TailPos]=dado;
 
+	if(fila->TailPos==(BUFFER_SIZE-1))
+		fila->TailPos=0;
+	else
 	fila->TailPos++;
 
 	fila->size++;
@@ -60,7 +61,10 @@ byte pop(Queue * fila){
 	fila->size--;
 
 	if(fila->size)
-		fila->headPos=(fila->TailPos-1);
+		if(!fila->TailPos)
+			fila->headPos=(BUFFER_SIZE-1);
+		else
+			fila->headPos=(fila->TailPos-1);
 	else
 		fila->headPos=(fila->TailPos);
 
