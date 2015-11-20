@@ -3,6 +3,7 @@
 
 #include "uart.h"
 #include "queue.h"
+#include "milli_counter.h"
 
 // We need 2 buffers, one to store data received from serial, and another to store data that will be sent through the serial
 Queue tx_buf;
@@ -50,6 +51,9 @@ void loop(){
 	if(tx_buffer_has_data())
 		turnOnRxOnTx();
 
+	milli_counter_start();
+		while(milli_counter()<TIME);
+	
 	if(rx_buffer_has_data())
 		push(&tx_buf, pop(&rx_buf));
 }
