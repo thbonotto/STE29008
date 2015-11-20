@@ -5,6 +5,14 @@
 #include "queue.h"
 #include "milli_counter.h"
 
+/**
+ * Build a graph where the x axis is the processing time (P={1,4,8}, ms)
+ * and the y axis is the minimum buffer size for a 1-second data transfer burst;
+ */
+milli_counter_t getDelay(){
+	return 1;
+}
+
 // We need 2 buffers, one to store data received from serial, and another to store data that will be sent through the serial
 Queue tx_buf;
 Queue rx_buf;
@@ -52,7 +60,7 @@ void loop(){
 		turnOnRxOnTx();
 
 	milli_counter_start();
-		while(milli_counter()<TIME);
+		while(milli_counter()<getDelay());
 	
 	if(rx_buffer_has_data())
 		push(&tx_buf, pop(&rx_buf));

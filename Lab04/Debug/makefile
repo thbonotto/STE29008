@@ -48,6 +48,9 @@ endif
 LSS += \
 Lab04.lss \
 
+FLASH_IMAGE += \
+Lab04.hex \
+
 SIZEDUMMY += \
 sizedummy \
 
@@ -69,6 +72,12 @@ Lab04.lss: Lab04.elf
 	@echo 'Finished building: $@'
 	@echo ' '
 
+Lab04.hex: Lab04.elf
+	@echo 'Create Flash image (ihex format)'
+	-avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex Lab04.elf  "Lab04.hex"
+	@echo 'Finished building: $@'
+	@echo ' '
+
 sizedummy: Lab04.elf
 	@echo 'Invoking: Print Size'
 	-avr-size --format=avr --mcu=atmega328p Lab04.elf
@@ -77,10 +86,10 @@ sizedummy: Lab04.elf
 
 # Other Targets
 clean:
-	-$(RM) $(OBJS)$(C_DEPS)$(ELFS)$(LSS)$(S_DEPS)$(CXX_DEPS)$(S_UPPER_DEPS)$(C++_DEPS)$(ASM_DEPS)$(CC_DEPS)$(CPP_DEPS)$(C_UPPER_DEPS)$(SIZEDUMMY) Lab04.elf
+	-$(RM) $(OBJS)$(C_DEPS)$(FLASH_IMAGE)$(ELFS)$(LSS)$(S_DEPS)$(CXX_DEPS)$(S_UPPER_DEPS)$(C++_DEPS)$(ASM_DEPS)$(CC_DEPS)$(CPP_DEPS)$(C_UPPER_DEPS)$(SIZEDUMMY) Lab04.elf
 	-@echo ' '
 
-secondary-outputs: $(LSS) $(SIZEDUMMY)
+secondary-outputs: $(LSS) $(FLASH_IMAGE) $(SIZEDUMMY)
 
 .PHONY: all clean dependents
 .SECONDARY:

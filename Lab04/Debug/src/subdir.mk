@@ -5,18 +5,15 @@
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
 ../src/Main.c \
-../src/queue.c \
-../src/uart.c 
+../src/milli_counter.c 
 
 OBJS += \
 ./src/Main.o \
-./src/queue.o \
-./src/uart.o 
+./src/milli_counter.o 
 
 C_DEPS += \
 ./src/Main.d \
-./src/queue.d \
-./src/uart.d 
+./src/milli_counter.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes

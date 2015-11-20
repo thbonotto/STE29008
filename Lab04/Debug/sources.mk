@@ -15,6 +15,7 @@ C++_SRCS :=
 CC_SRCS := 
 OBJS := 
 C_DEPS := 
+FLASH_IMAGE := 
 ELFS := 
 LSS := 
 S_DEPS := 
