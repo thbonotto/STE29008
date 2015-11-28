@@ -10,7 +10,7 @@
  * and the y axis is the minimum buffer size for a 1-second data transfer burst;
  */
 milli_counter_t getDelay(){
-	return 1;
+	return 0;
 }
 
 // We need 2 buffers, one to store data received from serial, and another to store data that will be sent through the serial

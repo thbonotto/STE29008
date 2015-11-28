@@ -12,6 +12,8 @@
 
 #include <avr/io.h>
 
+#define F_CPU 16000000UL
+
 void turnOnRxOffTx() {
 	UCSR0B = 0x98;
 }
@@ -25,7 +27,10 @@ void turnOnRxOnTx() {
 /// Configure serial to 9600 8N1
 void uart_setup() {
 	UBRR0H = 0;
-	UBRR0L = 103;
+		UBRR0L = 103; //9600
+	//	UBRR0L = 51; //19200
+	//	UBRR0L = 16; //57600
+	//	UBRR0L = 7; //115200
 	UCSR0C = 0x06;
 	turnOnRxOffTx();
 }
@@ -45,8 +50,7 @@ byte uart_receive_data() {
 }
 
 void uart_send_data(byte data) {
-	while (!uart_ready())
-		;
+	while (!uart_ready())		;
 	UDR0 = data;
 	turnOnRxOffTx();
 }
