@@ -27,7 +27,7 @@ void turnOnRxOnTx() {
 /// Configure serial to 9600 8N1
 void uart_setup() {
 	UBRR0H = 0;
-		UBRR0L = 103; //9600
+	//	UBRR0L = 103; //9600
 	//	UBRR0L = 51; //19200
 	//	UBRR0L = 16; //57600
 	//	UBRR0L = 7; //115200

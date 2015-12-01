@@ -13,32 +13,32 @@ RM := rm -rf
 -include objects.mk
 
 ifneq ($(MAKECMDGOALS),clean)
-ifneq ($(strip $(C++_DEPS)),)
--include $(C++_DEPS)
-endif
-ifneq ($(strip $(C_DEPS)),)
--include $(C_DEPS)
-endif
-ifneq ($(strip $(ASM_DEPS)),)
--include $(ASM_DEPS)
-endif
 ifneq ($(strip $(CC_DEPS)),)
 -include $(CC_DEPS)
 endif
-ifneq ($(strip $(CPP_DEPS)),)
--include $(CPP_DEPS)
-endif
-ifneq ($(strip $(S_DEPS)),)
--include $(S_DEPS)
-endif
-ifneq ($(strip $(CXX_DEPS)),)
--include $(CXX_DEPS)
+ifneq ($(strip $(C++_DEPS)),)
+-include $(C++_DEPS)
 endif
 ifneq ($(strip $(C_UPPER_DEPS)),)
 -include $(C_UPPER_DEPS)
 endif
+ifneq ($(strip $(CXX_DEPS)),)
+-include $(CXX_DEPS)
+endif
+ifneq ($(strip $(ASM_DEPS)),)
+-include $(ASM_DEPS)
+endif
+ifneq ($(strip $(S_DEPS)),)
+-include $(S_DEPS)
+endif
 ifneq ($(strip $(S_UPPER_DEPS)),)
 -include $(S_UPPER_DEPS)
+endif
+ifneq ($(strip $(C_DEPS)),)
+-include $(C_DEPS)
+endif
+ifneq ($(strip $(CPP_DEPS)),)
+-include $(CPP_DEPS)
 endif
 endif
 
@@ -46,47 +46,47 @@ endif
 
 # Add inputs and outputs from these tool invocations to the build variables 
 LSS += \
-Lab04.lss \
+Lab05.lss \
 
 FLASH_IMAGE += \
-Lab04.hex \
+Lab05.hex \
 
 SIZEDUMMY += \
 sizedummy \
 
 
 # All Target
-all: Lab04.elf secondary-outputs
+all: Lab05.elf secondary-outputs
 
 # Tool invocations
-Lab04.elf: $(OBJS) $(USER_OBJS)
+Lab05.elf: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: AVR C++ Linker'
-	avr-g++ -Wl,-Map,Lab04.map,--cref -mrelax -Wl,--gc-sections -mmcu=atmega328p -o "Lab04.elf" $(OBJS) $(USER_OBJS) $(LIBS)
+	avr-g++ -Wl,-Map,Lab05.map,--cref -mmcu=atmega328p -o "Lab05.elf" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
-Lab04.lss: Lab04.elf
+Lab05.lss: Lab05.elf
 	@echo 'Invoking: AVR Create Extended Listing'
-	-avr-objdump -h -S Lab04.elf  >"Lab04.lss"
+	-avr-objdump -h -S Lab05.elf  >"Lab05.lss"
 	@echo 'Finished building: $@'
 	@echo ' '
 
-Lab04.hex: Lab04.elf
+Lab05.hex: Lab05.elf
 	@echo 'Create Flash image (ihex format)'
-	-avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex Lab04.elf  "Lab04.hex"
+	-avr-objcopy -R .eeprom -O ihex Lab05.elf  "Lab05.hex"
 	@echo 'Finished building: $@'
 	@echo ' '
 
-sizedummy: Lab04.elf
+sizedummy: Lab05.elf
 	@echo 'Invoking: Print Size'
-	-avr-size --format=avr --mcu=atmega328p Lab04.elf
+	-avr-size --format=berkeley -t Lab05.elf
 	@echo 'Finished building: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) $(OBJS)$(C_DEPS)$(FLASH_IMAGE)$(ELFS)$(LSS)$(S_DEPS)$(CXX_DEPS)$(S_UPPER_DEPS)$(C++_DEPS)$(ASM_DEPS)$(CC_DEPS)$(CPP_DEPS)$(C_UPPER_DEPS)$(SIZEDUMMY) Lab04.elf
+	-$(RM) $(C_UPPER_DEPS)$(S_DEPS)$(LSS)$(C_DEPS)$(FLASH_IMAGE)$(CC_DEPS)$(ELFS)$(C++_DEPS)$(OBJS)$(CXX_DEPS)$(ASM_DEPS)$(SIZEDUMMY)$(S_UPPER_DEPS)$(CPP_DEPS) Lab05.elf
 	-@echo ' '
 
 secondary-outputs: $(LSS) $(FLASH_IMAGE) $(SIZEDUMMY)

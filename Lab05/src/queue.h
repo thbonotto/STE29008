@@ -13,14 +13,6 @@
 
 #include <avr/common.h>
 
-/*typedef struct Node {
-	volatile uint8_t pos;
-	volatile byte data;
-	volatile Node * next;
-	volatile Node * prev;
-} Node;
-*/
-
 typedef struct Queue {
 	volatile uint8_t size;
 	volatile byte buffer [BUFFER_SIZE];
@@ -44,15 +36,6 @@ void push(Queue * fila, byte dado){
 }
 
 byte pop(Queue * fila){
-	if(!fila->size)
-			return 0;
-
-/*	Node * nodo = fila->buffer[fila->headPos];
-	byte temp = *nodo->data;
-	*nodo->data=0;
-	nodo->prev->next=nodo->next;
-	nodo->next->prev=nodo->prev;
-*/
 
 	byte data = fila->buffer[fila->headPos];
 
