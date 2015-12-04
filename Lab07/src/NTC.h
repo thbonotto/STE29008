@@ -10,9 +10,8 @@
 
 class NTC {
 public:
-	NTC();
-	virtual ~NTC();
-	void NTC::getTemperature();
+	static long int getTemperature(const long int& resistence);
+
 };
 
 #endif /* SRC_NTC_H_ */

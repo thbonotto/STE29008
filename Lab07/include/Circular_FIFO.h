@@ -7,7 +7,7 @@
 
 #ifndef LIB_CIRCULARFIFO_H_
 #define LIB_CIRCULARFIFO_H_
-
+#include <stdlib.h>
 // If SIZE >= 2
 template<class T, int SIZE>
 class Circular_FIFO {
@@ -37,6 +37,10 @@ public:
 
     void clear() {
         in_pos = out_pos = size = 0;
+    }
+    void operator delete(void * p) // or delete(void *, std::size_t)
+    {
+      free(p);
     }
 
 private:

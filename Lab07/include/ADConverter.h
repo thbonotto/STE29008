@@ -59,18 +59,28 @@ public:
 	};
 
 	ADConverter();
-	ADConverter(const Channel& channel, const Frequency& freq, Reference ref, Mode mode);
+	ADConverter(const Channel& channel, const Frequency& freq,const Reference& ref, const Mode& mode);
 	virtual ~ADConverter();
 	int read();
-	void use_interrupts(); //liga as interrupções
+	void use_interrupts(bool enable = true); //liga as interrupções
 	int get_raw(); //0-1023
 	int get_volt(); // mV
 	int get_ref(); //mV-Referencia
-	int RMS(const int& repeat);
+	int RMS(const unsigned int& repeat);
+	static ADConverter& getInstance(){
+		return instance;
+	}
+	Circular_FIFO<long,44>& getBuffer(){
+		return this->buffer;
+	}
+	 void operator delete(void * p) // or delete(void *, std::size_t)
+	    {
+	      free(p);
+	    }
 
 private:
 	Circular_FIFO<long, 44 > buffer;
-
+	static ADConverter& instance;
 	void enable();
 
 };

@@ -2,13 +2,13 @@
 #include <avr/interrupt.h>
 
 #include "NTC.h"
+#include "ADConverter.h"
 
 int main(void) {
-    int x;
+    ADConverter adc;
+    NTC sensor;
     while(1) {
-        Accumulate(x);
-        RMS();
-        Temperature();
+    	sensor.getTemperature(adc.getBuffer().pop());
     }
     return 0;
 }
