@@ -7,33 +7,44 @@
 
 #include "NTC.h"
 
-NTC::NTC(long int& refRes, long int& beta) : _mode{Beta}, mRefRes{refRes} , mAorBeta{beta} {
+NTC::NTC(long int& refRes, long int& tempRes, long int& beta) : _mode{Beta}, mRefRes{refRes}, mAorTempRes{tempRes}, mBorBeta{beta} {
 
 }
 
-NTC::NTC(long int& A, long int& B, long int& C, long int& refRes)  : _mode{SteinhartHart},  mRefRes{refRes} , mAorBeta{A}, mB{B}, mC{C}{
+NTC::NTC(long int& refRes, long int& A, long int& B, long int& C)  : _mode{SteinhartHart},  mRefRes{refRes} , mAorTempRes{A}, mBorBeta{B}, mC{C}{
 
 }
 
 NTC::~NTC(){
 
 }
-
-long int NTC::getTemperatureBeta(){
-
-	long int T;
-	1/T = 1/T0 + (1/b)
-	T = this->mAorBeta/lnDivisor() ;
-		return T;
+//TODO
+long int NTC::lnDivisor(const long int& num, const long int& dem){
+	return 1;
 }
 
-long int NTC::getTemperatureSteinhartHart(){
+float getResistence(const float& Vin, const float& Vout){
+	float tempRes;
+	//TODO Calculations
+	return tempRes;
+}
+
+long int NTC::getTemperatureBeta(const float& resistence){
+
+	long int T,inverseT;
+	inverseT = 1/this->mAorTempRes + (1/this->mBorBeta)*lnDivisor(resistence,this->mRefRes);
+	T = 1/inverseT;
+
+	return T;
+}
+//TODO
+long int NTC::getTemperatureSteinhartHart(const float& resistence){
 
 		return 25;
 }
 
-long int NTC::getTemperature(const long int& resistence){
-	return (this->_mode == Beta) ? getTemperatureBeta() : getTemperatureSteinhartHart();
+long int NTC::getTemperature(const float& resistence){
+	return (this->_mode == Beta) ? getTemperatureBeta(resistence) : getTemperatureSteinhartHart(resistence);
 }
 
 

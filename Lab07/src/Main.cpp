@@ -10,7 +10,7 @@ static const unsigned long long PERIOD = 16; // ms
 
 void adc(){
 	ADConverter adc;
-	    NTC sensor;
+	    NTC sensor{};
 	    while(1) {
 	    	sensor.getTemperature(adc.getBuffer().pop());
 	    }

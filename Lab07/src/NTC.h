@@ -13,27 +13,34 @@ public:
 	/**
 	 *
 	 */
-	NTC(long int& beta, long int& refRes);
+	NTC(long int& refRes, long int& tempRes, long int& beta);
 	/**
 	 *
 	 */
-	NTC(long int& A, long int& B, long int& C, long int& refRes);
+	NTC(long int& refRes, long int& A, long int& B, long int& C);
 
 	virtual ~NTC();
-	long int getTemperature(const long int& currentRes);
+
+	float getResistence(const float& Vin, const float& Vout);
+
+	long int getTemperature(const float& currentRes);
 private:
 	enum Type {
 		Beta,
 		SteinhartHart
 	};
 
+	long int NTC::lnDivisor(const long int& num, const long int& dem);
+
+	long int NTC::getTemperatureBeta(const float& resistence);
+
+	long int NTC::getTemperatureSteinhartHart(const float& resistence);
+
 	Type _mode;
 
-	long int NTC::getTemperatureBeta();
+	long int mRefRes, mAorTempRes, mBorBeta, mC{0};
 
-	long int NTC::getTemperatureSteinhartHart();
 
-	long int mRefRes, mAorBeta, mB{0}, mC{0};
 };
 
 #endif /* SRC_NTC_H_ */
