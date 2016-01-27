@@ -9,6 +9,8 @@
 static const unsigned long long FREQ = 16000000/256; //Hz
 static const unsigned long long PERIOD = 16; // ms
 
+void __cxa_pure_virtual(void){};
+
 ISR(TIMER0_OVF_vect) {
 	Timer::instance()->isr_handler();
 }

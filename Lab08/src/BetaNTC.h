@@ -14,10 +14,9 @@ class BetaNTC: public NTC {
 public:
 	BetaNTC(long int& refRes, long int& tempRes, long int& beta);
 	virtual ~BetaNTC();
-	float getResistence(const float& Vin, const float& Vout);
 	long int getTemperature(const float& currentRes);
 private:
-	long int mRefRes, TempRes, mBeta;
+	long int mTempRes, mBeta;
 };
 
 #endif /* SRC_BETANTC_H_ */

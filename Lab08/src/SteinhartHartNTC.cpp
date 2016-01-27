@@ -6,10 +6,10 @@
  */
 
 #include "SteinhartHartNTC.h"
+#include <math.h>
 
-SteinhartHartNTC::SteinhartHartNTC(long int& refRes, long int& A, long int& B, long int& C) {
-	// TODO Auto-generated constructor stub
-
+SteinhartHartNTC::SteinhartHartNTC(long int& refRes, long int& A, long int& B, long int& C) : mA(A), mB(B), mC(C) {
+	this->mRefRes=refRes;
 }
 
 SteinhartHartNTC::~SteinhartHartNTC() {
@@ -17,7 +17,9 @@ SteinhartHartNTC::~SteinhartHartNTC() {
 }
 
 //TODO
-long int SteinhartHartNTC::getTemperature(const float& resistence){
+long int SteinhartHartNTC::getTemperature(const float& resistence) {
 
-		return 25;
+	long int TempTemp;
+	TempTemp = this->mA + (this->mB*log(resistence)) + this->mC*(pow(log(resistence),3));
+	return 1/TempTemp;
 }

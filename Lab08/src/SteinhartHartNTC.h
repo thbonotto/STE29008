@@ -14,10 +14,9 @@ class SteinhartHartNTC: public NTC {
 public:
 	SteinhartHartNTC(long int& refRes, long int& A, long int& B, long int& C);
 	virtual ~SteinhartHartNTC();
-	float getResistence(const float& Vin, const float& Vout);
 	long int getTemperature(const float& currentRes);
 private:
-	long int mRefRes, mA, mB, mC;
+	long int mA, mB, mC;
 };
 
 #endif /* SRC_STEINHARTHARTNTC_H_ */
