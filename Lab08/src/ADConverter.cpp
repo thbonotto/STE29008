@@ -13,7 +13,7 @@ ADConverter::ADConverter(){
 ADConverter::~ADConverter(){
 
 }
-ADConverter::ADConverter(const Channel& channel, const Frequency& freq,const Reference& ref, const Mode& mode){
+ADConverter::ADConverter(Channel& channel, Frequency& freq, Reference& ref, Mode& mode){
 	ADMUX |= ( 1 << ref );
 
 	ADMUX |= channel;
@@ -33,7 +33,7 @@ int ADConverter::get_raw(){
  *    22           0x002A     ADC   ADC Conversion Complete
  */
 void ADConverter::use_interrupts(bool enable){
-	//TODO user ? operator and code the else to disable.
+	//TODO code the else to disable.
 	if(enable)
 	  ADCSRA |= 0x7A;
 }
@@ -44,6 +44,7 @@ ISR(ADC_vect){
 }
 /// TODO
 int ADConverter::get_volt(){
+
 	return 0;
 	/* res = (res0*5/V0) - res0;
 	 R = (R0.Vin)/Vout - R0 */

@@ -59,7 +59,7 @@ public:
 	};
 
 	ADConverter();
-	ADConverter(const Channel& channel, const Frequency& freq,const Reference& ref, const Mode& mode);
+	ADConverter(Channel& channel, Frequency& freq, Reference& ref, Mode& mode);
 	virtual ~ADConverter();
 	int read();
 	void use_interrupts(bool enable = true); //liga as interrupções

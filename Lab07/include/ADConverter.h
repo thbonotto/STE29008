@@ -57,9 +57,7 @@ public:
 		TRIG_TIMER1_CAPT_EVENT = 0x07,
 		SINGLE_SHOT = 0x08 //se esse modo => ADATE = 0
 	};
-
-	ADConverter();
-	ADConverter(const Channel& channel, const Frequency& freq,const Reference& ref, const Mode& mode);
+	ADConverter(Channel channel, Frequency freq, Reference ref, Mode mode);
 	virtual ~ADConverter();
 	int read();
 	void use_interrupts(bool enable = true); //liga as interrupções
@@ -67,21 +65,27 @@ public:
 	int get_volt(); // mV
 	int get_ref(); //mV-Referencia
 	int RMS(const unsigned int& repeat);
+	void run();
 	static ADConverter& getInstance(){
 		return instance;
 	}
-	Circular_FIFO<long,44>& getBuffer(){
+	Circular_FIFO<long,23>& getBuffer(){
 		return this->buffer;
 	}
-	 void operator delete(void * p) // or delete(void *, std::size_t)
-	    {
-	      free(p);
-	    }
+	void operator delete(void * p) // or delete(void *, std::size_t)
+	{
+		free(p);
+	}
+
+	uint16_t get_conversion();
 
 private:
-	Circular_FIFO<long, 44 > buffer;
+	Circular_FIFO<long, 23 > buffer;
 	static ADConverter& instance;
-	void enable();
+	Channel mChannel;
+	Frequency mFreq;
+	Reference mRef;
+	Mode mMode;
 
 };
 

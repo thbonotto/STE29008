@@ -5,42 +5,32 @@
  *      Author: aluno
  */
 
-#ifndef SRC_NTC_H_
-#define SRC_NTC_H_
+#pragma once
+
+extern "C" void __cxa_pure_virtual(void);
+
+#include <stdlib.h>
 
 class NTC {
 public:
-	/**
-	 *
-	 */
-	NTC(long int& refRes, long int& tempRes, long int& beta);
-	/**
-	 *
-	 */
-	NTC(long int& refRes, long int& A, long int& B, long int& C);
 
 	virtual ~NTC();
 
-	float getResistence(const float& Vin, const float& Vout);
+	float getResistence(const float& Vin, const float& Vout){
+		return this->mRefRes*(Vin/Vout) - this->mRefRes;
+	}
 
-	long int getTemperature(const float& currentRes);
-private:
-	enum Type {
-		Beta,
-		SteinhartHart
-	};
+	void operator delete(void * p) {
+		free(p);
+	}
 
-	long int NTC::lnDivisor(const long int& num, const long int& dem);
+	virtual long int getTemperature(const float& currentRes) = 0;
 
-	long int NTC::getTemperatureBeta(const float& resistence);
-
-	long int NTC::getTemperatureSteinhartHart(const float& resistence);
-
-	Type _mode;
-
-	long int mRefRes, mAorTempRes, mBorBeta, mC{0};
-
+	inline long int getCelsiusTemperature(const float& currentRes){
+		return getTemperature(currentRes) - 273.15;
+	}	;
+protected:
+	int mRefRes;
 
 };
 
-#endif /* SRC_NTC_H_ */

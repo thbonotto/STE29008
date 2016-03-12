@@ -1,33 +1,47 @@
-#include "NTC.h"
-#include "ADConverter.h"
-#include "Timer.h"
-
 #include <avr/io.h>
 #include <avr/interrupt.h>
 
-static const unsigned long long FREQ = 16000000/256; //Hz
-static const unsigned long long PERIOD = 16; // ms
 
-void adc(){
-	ADConverter adc;
-	    NTC sensor{};
+#include "BetaNTC.h"
+#include "SteinhartHartNTC.h"
+#include "ADConverter.h"
+#include "Uart.h"
+
+
+void __cxa_pure_virtual(void){};
+
+void operator delete(void * p) // or delete(void *, std::size_t)
+    {
+      free(p);
+    }
+
+void adcFunc(){
+	//ADConverter(Channel& channel, Frequency& freq, Reference& ref, Mode& mode);
+	ADConverter adc(ADConverter::CHANNEL_0, ADConverter::F2M, ADConverter::AREF, ADConverter::FREE_RUNNING);
+	Uart uart;
+	sei();
+	adc.run();
+	volatile long int temp;
+	BetaNTC sensor(10000,25l,3380);
+//	SteinhartHartNTC sensor(10000,1.139506696e-03,2.333946973e-04,0.8302029848e-07);
+
 	    while(1) {
-	    	sensor.getTemperature(adc.getBuffer().pop());
+	    	if(adc.getBuffer().available() >= 20){
+	    		PORTB &= ~_BV(PORTB5);
+	    		cli();
+	    		temp =  sensor.getCelsiusTemperature(adc.get_conversion());
+	    		sei();
+	    		uart.post(temp);
+
+
+	    	}
+
+
 	    }
 }
 
-void timer(){
-	Timer timer(FREQ);
-	DDRB = 0xFF;
-	sei();
-	while(true){
-		timer.restart();
-		while(timer.microseconds() < 500000);
-		PORTB = ~ PORTB;
-	}
-}
 
 int main(void) {
-    return 0;
+	adcFunc();
 }
 
