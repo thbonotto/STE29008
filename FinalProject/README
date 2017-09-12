@@ -1,0 +1,15 @@
+This project is implementing a Fly-to-Waypoint control system for a quadrotor drone.
+
+FlightController: 
+HobbyKing KK 2.1.5
+http://www.hobbyking.com/hobbyking/store/__54299__Hobbyking_KK2_1_5_Multi_rotor_LCD_Flight_Control_Board_With_6050MPU_And_Atmel_644PA.html
+
+GPS System:
+Maestro A2035-H
+http://www.maestro-wireless.com/portfolio-items/a2035-h/
+http://update.maestro-wireless.com/Technical%20Documentation/GPS%20Line/A2035-H/
+
+Communication:
+EPOSMote3 + Range Extender
+http://epos.lisha.ufsc.br
+

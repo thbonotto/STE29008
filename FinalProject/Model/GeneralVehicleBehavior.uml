@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_VxJZYE2eEeWxP9GruJbBHQ" name="RootElement">
+  <packagedElement xmi:type="uml:Activity" xmi:id="_VxNq0E2eEeWxP9GruJbBHQ" name="MissionControlProcess" node="_16TuME2eEeWxP9GruJbBHQ _QLXAIE2fEeWxP9GruJbBHQ _GzJ6oE2fEeWxP9GruJbBHQ _oXP8YE2fEeWxP9GruJbBHQ _pxlzcE2fEeWxP9GruJbBHQ _sKeWYE2fEeWxP9GruJbBHQ _ehSucE2gEeWxP9GruJbBHQ _2MG98E2gEeWxP9GruJbBHQ _6XeyME2gEeWxP9GruJbBHQ __GT40E2gEeWxP9GruJbBHQ _DWn3cE2hEeWxP9GruJbBHQ _PCgPwE2hEeWxP9GruJbBHQ _v_ZHkE2hEeWxP9GruJbBHQ _GIaNIE2iEeWxP9GruJbBHQ _Jp2TkE2iEeWxP9GruJbBHQ _n9AJAE2iEeWxP9GruJbBHQ _tIkO8E2iEeWxP9GruJbBHQ _6Z8lcE2iEeWxP9GruJbBHQ _J0kgYE2jEeWxP9GruJbBHQ _lLU2IE2jEeWxP9GruJbBHQ">
+    <ownedRule xmi:type="uml:Constraint" xmi:id="_1ntF0E2fEeWxP9GruJbBHQ" name="StartMissionConstraints" constrainedElement="_QLXAIE2fEeWxP9GruJbBHQ">
+      <specification xmi:type="uml:OpaqueExpression" xmi:id="_9tndAE2fEeWxP9GruJbBHQ">
+        <language>OCL</language>
+        <body>MissionEnergyConsumption &lt; 0.85*BatteryCharge</body>
+      </specification>
+    </ownedRule>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_TkyaEE2fEeWxP9GruJbBHQ" target="_QLXAIE2fEeWxP9GruJbBHQ" source="_16TuME2eEeWxP9GruJbBHQ"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_UDoSME2fEeWxP9GruJbBHQ" target="_QLXAIE2fEeWxP9GruJbBHQ" source="_GzJ6oE2fEeWxP9GruJbBHQ"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_k81OgE2gEeWxP9GruJbBHQ" target="_oXP8YE2fEeWxP9GruJbBHQ" source="_QLXAIE2fEeWxP9GruJbBHQ"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_lXTkAE2gEeWxP9GruJbBHQ" target="_pxlzcE2fEeWxP9GruJbBHQ" source="_oXP8YE2fEeWxP9GruJbBHQ"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_lv0xsE2gEeWxP9GruJbBHQ" target="_sKeWYE2fEeWxP9GruJbBHQ" source="_pxlzcE2fEeWxP9GruJbBHQ"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_mJRzgE2gEeWxP9GruJbBHQ" target="_ehSucE2gEeWxP9GruJbBHQ" source="_sKeWYE2fEeWxP9GruJbBHQ"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_qbUQcE2gEeWxP9GruJbBHQ" name="[not end-of-mission]" target="_pxlzcE2fEeWxP9GruJbBHQ" source="_ehSucE2gEeWxP9GruJbBHQ"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_AnafME2hEeWxP9GruJbBHQ" name="[end-of-mission]" target="_6XeyME2gEeWxP9GruJbBHQ" source="_ehSucE2gEeWxP9GruJbBHQ"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_HEWGYE2hEeWxP9GruJbBHQ" name="[not at base]" target="_2MG98E2gEeWxP9GruJbBHQ" source="_6XeyME2gEeWxP9GruJbBHQ"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_Ix3YIE2hEeWxP9GruJbBHQ" name="[at base]" target="__GT40E2gEeWxP9GruJbBHQ" source="_6XeyME2gEeWxP9GruJbBHQ"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_KrcI4E2hEeWxP9GruJbBHQ" name="[not at land]" target="_DWn3cE2hEeWxP9GruJbBHQ" source="__GT40E2gEeWxP9GruJbBHQ"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_R3LW0E2hEeWxP9GruJbBHQ" name="[at land]" target="_PCgPwE2hEeWxP9GruJbBHQ" source="__GT40E2gEeWxP9GruJbBHQ"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_d0AVME2hEeWxP9GruJbBHQ" target="_6XeyME2gEeWxP9GruJbBHQ" source="_2MG98E2gEeWxP9GruJbBHQ"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_m-ypwE2hEeWxP9GruJbBHQ" target="__GT40E2gEeWxP9GruJbBHQ" source="_DWn3cE2hEeWxP9GruJbBHQ"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_uRQVUE2iEeWxP9GruJbBHQ" target="_tIkO8E2iEeWxP9GruJbBHQ" source="_n9AJAE2iEeWxP9GruJbBHQ"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_vSGuUE2iEeWxP9GruJbBHQ" name="[has energy to perform mission]" target="_QLXAIE2fEeWxP9GruJbBHQ" source="_tIkO8E2iEeWxP9GruJbBHQ"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_NGIXwE2jEeWxP9GruJbBHQ" target="_J0kgYE2jEeWxP9GruJbBHQ" source="_6Z8lcE2iEeWxP9GruJbBHQ"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_b8H7oE2jEeWxP9GruJbBHQ" target="_DWn3cE2hEeWxP9GruJbBHQ" source="_J0kgYE2jEeWxP9GruJbBHQ"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_nCucoE2jEeWxP9GruJbBHQ" name="[not enough energy]" target="_Jp2TkE2iEeWxP9GruJbBHQ" source="_tIkO8E2iEeWxP9GruJbBHQ"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_p_yDoE2jEeWxP9GruJbBHQ" target="_lLU2IE2jEeWxP9GruJbBHQ" source="_PCgPwE2hEeWxP9GruJbBHQ"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_y56tEE2jEeWxP9GruJbBHQ" name="[MissionAborted]" target="_Jp2TkE2iEeWxP9GruJbBHQ" source="_lLU2IE2jEeWxP9GruJbBHQ"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_1FHZUE2jEeWxP9GruJbBHQ" name="[not MissionAborted]" target="_v_ZHkE2hEeWxP9GruJbBHQ" source="_lLU2IE2jEeWxP9GruJbBHQ"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_83qvoE2jEeWxP9GruJbBHQ" target="_GIaNIE2iEeWxP9GruJbBHQ" source="_v_ZHkE2hEeWxP9GruJbBHQ"/>
+    <node xmi:type="uml:ActivityParameterNode" xmi:id="_16TuME2eEeWxP9GruJbBHQ" name="Mission" outgoing="_TkyaEE2fEeWxP9GruJbBHQ">
+      <upperBound xmi:type="uml:LiteralInteger" xmi:id="_16VjYE2eEeWxP9GruJbBHQ" value="1"/>
+    </node>
+    <node xmi:type="uml:InitialNode" xmi:id="_GzJ6oE2fEeWxP9GruJbBHQ" name="SystemStart" outgoing="_UDoSME2fEeWxP9GruJbBHQ"/>
+    <node xmi:type="uml:CreateObjectAction" xmi:id="_QLXAIE2fEeWxP9GruJbBHQ" name="WaitMissionStartTime" incoming="_TkyaEE2fEeWxP9GruJbBHQ _UDoSME2fEeWxP9GruJbBHQ _vSGuUE2iEeWxP9GruJbBHQ" outgoing="_k81OgE2gEeWxP9GruJbBHQ"/>
+    <node xmi:type="uml:CreateObjectAction" xmi:id="_oXP8YE2fEeWxP9GruJbBHQ" name="InitializeMission" incoming="_k81OgE2gEeWxP9GruJbBHQ" outgoing="_lXTkAE2gEeWxP9GruJbBHQ"/>
+    <node xmi:type="uml:CreateObjectAction" xmi:id="_pxlzcE2fEeWxP9GruJbBHQ" name="NavigateToNextWaypoint" incoming="_lXTkAE2gEeWxP9GruJbBHQ _qbUQcE2gEeWxP9GruJbBHQ" outgoing="_lv0xsE2gEeWxP9GruJbBHQ"/>
+    <node xmi:type="uml:CreateObjectAction" xmi:id="_sKeWYE2fEeWxP9GruJbBHQ" name="PerformActions" incoming="_lv0xsE2gEeWxP9GruJbBHQ" outgoing="_mJRzgE2gEeWxP9GruJbBHQ"/>
+    <node xmi:type="uml:DecisionNode" xmi:id="_ehSucE2gEeWxP9GruJbBHQ" name="" incoming="_mJRzgE2gEeWxP9GruJbBHQ" outgoing="_qbUQcE2gEeWxP9GruJbBHQ _AnafME2hEeWxP9GruJbBHQ"/>
+    <node xmi:type="uml:CreateObjectAction" xmi:id="_2MG98E2gEeWxP9GruJbBHQ" name="ReturnToBase" incoming="_HEWGYE2hEeWxP9GruJbBHQ" outgoing="_d0AVME2hEeWxP9GruJbBHQ"/>
+    <node xmi:type="uml:DecisionNode" xmi:id="_6XeyME2gEeWxP9GruJbBHQ" name="" incoming="_AnafME2hEeWxP9GruJbBHQ _d0AVME2hEeWxP9GruJbBHQ" outgoing="_HEWGYE2hEeWxP9GruJbBHQ _Ix3YIE2hEeWxP9GruJbBHQ"/>
+    <node xmi:type="uml:DecisionNode" xmi:id="__GT40E2gEeWxP9GruJbBHQ" name="" incoming="_Ix3YIE2hEeWxP9GruJbBHQ _m-ypwE2hEeWxP9GruJbBHQ" outgoing="_KrcI4E2hEeWxP9GruJbBHQ _R3LW0E2hEeWxP9GruJbBHQ"/>
+    <node xmi:type="uml:CreateObjectAction" xmi:id="_DWn3cE2hEeWxP9GruJbBHQ" name="Land" incoming="_KrcI4E2hEeWxP9GruJbBHQ _b8H7oE2jEeWxP9GruJbBHQ" outgoing="_m-ypwE2hEeWxP9GruJbBHQ"/>
+    <node xmi:type="uml:CreateObjectAction" xmi:id="_PCgPwE2hEeWxP9GruJbBHQ" name="Shutdown" incoming="_R3LW0E2hEeWxP9GruJbBHQ" outgoing="_p_yDoE2jEeWxP9GruJbBHQ"/>
+    <node xmi:type="uml:CreateObjectAction" xmi:id="_v_ZHkE2hEeWxP9GruJbBHQ" name="UploadMissionResults" incoming="_1FHZUE2jEeWxP9GruJbBHQ" outgoing="_83qvoE2jEeWxP9GruJbBHQ"/>
+    <node xmi:type="uml:ActivityFinalNode" xmi:id="_GIaNIE2iEeWxP9GruJbBHQ" name="Success" incoming="_83qvoE2jEeWxP9GruJbBHQ"/>
+    <node xmi:type="uml:ActivityFinalNode" xmi:id="_Jp2TkE2iEeWxP9GruJbBHQ" name="Failed" incoming="_nCucoE2jEeWxP9GruJbBHQ _y56tEE2jEeWxP9GruJbBHQ"/>
+    <node xmi:type="uml:ActivityParameterNode" xmi:id="_n9AJAE2iEeWxP9GruJbBHQ" name="MissionStartTime" outgoing="_uRQVUE2iEeWxP9GruJbBHQ">
+      <upperBound xmi:type="uml:LiteralInteger" xmi:id="_n9AwEE2iEeWxP9GruJbBHQ" value="1"/>
+    </node>
+    <node xmi:type="uml:DecisionNode" xmi:id="_tIkO8E2iEeWxP9GruJbBHQ" name="" incoming="_uRQVUE2iEeWxP9GruJbBHQ" outgoing="_vSGuUE2iEeWxP9GruJbBHQ _nCucoE2jEeWxP9GruJbBHQ"/>
+    <node xmi:type="uml:ActivityParameterNode" xmi:id="_6Z8lcE2iEeWxP9GruJbBHQ" name="LowBattery" outgoing="_NGIXwE2jEeWxP9GruJbBHQ">
+      <upperBound xmi:type="uml:LiteralInteger" xmi:id="_6Z9MgE2iEeWxP9GruJbBHQ" value="1"/>
+    </node>
+    <node xmi:type="uml:DataStoreNode" xmi:id="_J0kgYE2jEeWxP9GruJbBHQ" name="MissionAborted" incoming="_NGIXwE2jEeWxP9GruJbBHQ" outgoing="_b8H7oE2jEeWxP9GruJbBHQ">
+      <upperBound xmi:type="uml:LiteralInteger" xmi:id="_J0lHcE2jEeWxP9GruJbBHQ" value="1"/>
+    </node>
+    <node xmi:type="uml:DecisionNode" xmi:id="_lLU2IE2jEeWxP9GruJbBHQ" name="" incoming="_p_yDoE2jEeWxP9GruJbBHQ" outgoing="_y56tEE2jEeWxP9GruJbBHQ _1FHZUE2jEeWxP9GruJbBHQ"/>
+  </packagedElement>
+</uml:Model>

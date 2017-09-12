@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_NMFNkE2JEeWxP9GruJbBHQ" name="RootElement">
+  <packagedElement xmi:type="uml:Package" xmi:id="_QTcAEE2JEeWxP9GruJbBHQ" name="MissionControlCenter">
+    <packagedElement xmi:type="uml:Package" xmi:id="_w5JG8E2JEeWxP9GruJbBHQ" name="WebServicesInterface">
+      <packagedElement xmi:type="uml:Dependency" xmi:id="_LIf9gE2PEeWxP9GruJbBHQ" client="_w5JG8E2JEeWxP9GruJbBHQ" supplier="_DUTocE2PEeWxP9GruJbBHQ"/>
+      <packagedElement xmi:type="uml:Dependency" xmi:id="_L_blgE2PEeWxP9GruJbBHQ" client="_w5JG8E2JEeWxP9GruJbBHQ" supplier="_Vkw6UE2KEeWxP9GruJbBHQ"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Artifact" xmi:id="_LVbYgE2KEeWxP9GruJbBHQ" name="Database"/>
+    <packagedElement xmi:type="uml:Model" xmi:id="_Vkw6UE2KEeWxP9GruJbBHQ" name="DatabaseModel"/>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="_njMOwE2KEeWxP9GruJbBHQ" client="_LVbYgE2KEeWxP9GruJbBHQ" supplier="_Vkw6UE2KEeWxP9GruJbBHQ"/>
+    <packagedElement xmi:type="uml:Artifact" xmi:id="_DUTocE2PEeWxP9GruJbBHQ" name="WebServer"/>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="_KC19AE2PEeWxP9GruJbBHQ" client="_DUTocE2PEeWxP9GruJbBHQ" supplier="_LVbYgE2KEeWxP9GruJbBHQ"/>
+    <packagedElement xmi:type="uml:Package" xmi:id="_OqnZYE2PEeWxP9GruJbBHQ" name="WebGUI">
+      <packagedElement xmi:type="uml:Dependency" xmi:id="_ViFngE2PEeWxP9GruJbBHQ" client="_OqnZYE2PEeWxP9GruJbBHQ" supplier="_DUTocE2PEeWxP9GruJbBHQ"/>
+      <packagedElement xmi:type="uml:Dependency" xmi:id="_WCu2cE2PEeWxP9GruJbBHQ" client="_OqnZYE2PEeWxP9GruJbBHQ" supplier="_w5JG8E2JEeWxP9GruJbBHQ"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Artifact" xmi:id="_bwtF4E2PEeWxP9GruJbBHQ" name="VehicleConnectionDaemon"/>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="_uZe-4E2PEeWxP9GruJbBHQ" client="_bwtF4E2PEeWxP9GruJbBHQ" supplier="_w5JG8E2JEeWxP9GruJbBHQ"/>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="_OrcDUE2QEeWxP9GruJbBHQ" client="_bwtF4E2PEeWxP9GruJbBHQ _Wpj0oE2JEeWxP9GruJbBHQ" supplier="_5sztQE2PEeWxP9GruJbBHQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Package" xmi:id="_TvUREE2JEeWxP9GruJbBHQ" name="VehicleCommunicationSystem">
+    <packagedElement xmi:type="uml:Package" xmi:id="_5sztQE2PEeWxP9GruJbBHQ" name="Modem"/>
+    <packagedElement xmi:type="uml:Artifact" xmi:id="_DYiywE2QEeWxP9GruJbBHQ" name="Antenna"/>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="_GbBsUE2QEeWxP9GruJbBHQ" client="_DYiywE2QEeWxP9GruJbBHQ" supplier="_5sztQE2PEeWxP9GruJbBHQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Package" xmi:id="_Wpj0oE2JEeWxP9GruJbBHQ" name="VehicleCommunicationProtocol"/>
+  <packagedElement xmi:type="uml:Package" xmi:id="_YqkDEE2JEeWxP9GruJbBHQ" name="Vehicle">
+    <packagedElement xmi:type="uml:Artifact" xmi:id="_ZbXJsE2QEeWxP9GruJbBHQ" name="VehicleCommunicationSystemReceiver"/>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="_bzMjwE2QEeWxP9GruJbBHQ" client="_ZbXJsE2QEeWxP9GruJbBHQ" supplier="_Wpj0oE2JEeWxP9GruJbBHQ"/>
+    <packagedElement xmi:type="uml:Artifact" xmi:id="_j03UIE2QEeWxP9GruJbBHQ" name="MissionController"/>
+    <packagedElement xmi:type="uml:Artifact" xmi:id="_nQIhIE2QEeWxP9GruJbBHQ" name="MissionDatabase"/>
+    <packagedElement xmi:type="uml:Package" xmi:id="_r-QdIE2QEeWxP9GruJbBHQ" name="MissionPayload">
+      <packagedElement xmi:type="uml:Artifact" xmi:id="_wCeggE2QEeWxP9GruJbBHQ" name="Camera"/>
+      <packagedElement xmi:type="uml:Artifact" xmi:id="_yDNCIE2QEeWxP9GruJbBHQ" name="Sensors"/>
+      <packagedElement xmi:type="uml:Artifact" xmi:id="_zp8WcE2QEeWxP9GruJbBHQ" name="Actuators"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Artifact" xmi:id="_t2ZqgE2QEeWxP9GruJbBHQ" name="FlightController"/>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="_-X6VAE2QEeWxP9GruJbBHQ" client="_j03UIE2QEeWxP9GruJbBHQ" supplier="_wCeggE2QEeWxP9GruJbBHQ"/>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="__FtPIE2QEeWxP9GruJbBHQ" client="_j03UIE2QEeWxP9GruJbBHQ" supplier="_yDNCIE2QEeWxP9GruJbBHQ"/>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="__gFeAE2QEeWxP9GruJbBHQ" client="_j03UIE2QEeWxP9GruJbBHQ" supplier="_zp8WcE2QEeWxP9GruJbBHQ"/>
+    <packagedElement xmi:type="uml:Artifact" xmi:id="_HclagE2REeWxP9GruJbBHQ" name="GPS" fileName=""/>
+    <packagedElement xmi:type="uml:Artifact" xmi:id="_LI3fAE2REeWxP9GruJbBHQ" name="Barometer" fileName=""/>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="_oLSsYE2REeWxP9GruJbBHQ" client="_j03UIE2QEeWxP9GruJbBHQ" supplier="_HclagE2REeWxP9GruJbBHQ"/>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="_ohfl4E2REeWxP9GruJbBHQ" client="_j03UIE2QEeWxP9GruJbBHQ" supplier="_LI3fAE2REeWxP9GruJbBHQ"/>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="_o-yl4E2REeWxP9GruJbBHQ" client="_j03UIE2QEeWxP9GruJbBHQ" supplier="_t2ZqgE2QEeWxP9GruJbBHQ"/>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="_r_qV4E2REeWxP9GruJbBHQ" client="_j03UIE2QEeWxP9GruJbBHQ" supplier="_nQIhIE2QEeWxP9GruJbBHQ"/>
+    <packagedElement xmi:type="uml:Artifact" xmi:id="_vF2qwE2REeWxP9GruJbBHQ" name="Thermometer"/>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="_yOTpcE2REeWxP9GruJbBHQ" client="_j03UIE2QEeWxP9GruJbBHQ" supplier="_vF2qwE2REeWxP9GruJbBHQ"/>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="_4pDfUE2REeWxP9GruJbBHQ" client="_j03UIE2QEeWxP9GruJbBHQ" supplier="_ZbXJsE2QEeWxP9GruJbBHQ"/>
+  </packagedElement>
+</uml:Model>
